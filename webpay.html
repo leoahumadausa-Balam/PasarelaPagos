@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpay Plus - Transbank</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos de Webpay -->
+    <link rel="stylesheet" href="css/webpay.css">
+</head>
+<body>
+
+    <div class="webpay-wrapper">
+        <!-- Contenedor Principal de la Pasarela -->
+        <div class="webpay-container">
+            
+            <!-- Barra superior con Logo de Webpay y Transbank -->
+            <header class="webpay-header">
+                <div class="wp-logo">
+                    <span class="wp-badge">webpay</span><span class="wp-type">plus</span>
+                </div>
+                <div class="tb-logo">
+                    transbank.
+                </div>
+            </header>
+
+            <!-- Grid de dos columnas (Resumen / Formulario) -->
+            <div class="webpay-content">
+                
+                <!-- Columna Izquierda: Información de Transacción -->
+                <aside class="transaction-summary">
+                    <h3>Detalles de la compra</h3>
+                    
+                    <div class="summary-item">
+                        <span class="summary-label">Comercio</span>
+                        <span class="summary-value" id="merchant-name">A1Click S.A.</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span class="summary-label">Orden de Compra</span>
+                        <span class="summary-value" id="order-number">A1C-XXXXXX</span>
+                    </div>
+
+                    <div class="summary-item">
+                        <span class="summary-label">Descripción</span>
+                        <span class="summary-value">Pago de Productos de Oficina</span>
+                    </div>
+                    
+                    <div class="summary-item amount-item">
+                        <span class="summary-label">Monto a Pagar</span>
+                        <span class="summary-value amount" id="pay-amount">$0</span>
+                    </div>
+
+                    <div class="security-info">
+                        <i class="fa-solid fa-lock"></i> Conexión Encriptada de Seguridad SSL. Sus datos están protegidos.
+                    </div>
+                </aside>
+
+                <!-- Columna Derecha: Formulario de Pago de Tarjeta -->
+                <main class="payment-form-section">
+                    <div class="payment-tabs">
+                        <button class="tab-btn active"><i class="fa-solid fa-credit-card"></i> Tarjeta de Crédito / Débito</button>
+                    </div>
+
+                    <form id="webpay-form" class="payment-form" novalidate>
+                        <div class="form-group">
+                            <label for="card-number">Número de Tarjeta</label>
+                            <div class="input-icon-wrapper">
+                                <input type="text" id="card-number" placeholder="4590 1234 5678 9012" maxlength="19" required autocomplete="off">
+                                <i class="fa-regular fa-credit-card input-icon" id="card-brand-icon"></i>
+                            </div>
+                            <span class="error-msg" id="card-error">Número de tarjeta inválido (16 dígitos requeridos)</span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="card-expiry">Fecha de Vencimiento</label>
+                                <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5" required autocomplete="off">
+                                <span class="error-msg" id="expiry-error">Formato incorrecto (MM/AA)</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="card-cvv">Código de Seguridad (CVV)</label>
+                                <div class="input-icon-wrapper">
+                                    <input type="password" id="card-cvv" placeholder="123" maxlength="3" required autocomplete="off">
+                                    <i class="fa-solid fa-circle-question input-icon cvc-hint-btn" title="Código de 3 dígitos atrás de la tarjeta"></i>
+                                </div>
+                                <span class="error-msg" id="cvv-error">CVV inválido (3 dígitos)</span>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="index.html" class="btn-cancel">Anular Pago</a>
+                            <button type="submit" class="btn-pay">Autorizar Pago</button>
+                        </div>
+                    </form>
+                </main>
+            </div>
+
+            <!-- Footer de Webpay -->
+            <footer class="webpay-footer">
+                <p>Al hacer clic en pagar estarás aceptando los términos y condiciones de Transbank.</p>
+                <div class="logos-footer">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-amex"></i>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Pantalla de Carga Transbank -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loader-card">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <h2 id="loading-status">Conectando con Transbank...</h2>
+            <p>Por favor no recargues la página ni cierres el navegador.</p>
+        </div>
+    </div>
+
+    <!-- Script de Lógica Webpay -->
+    <script src="js/webpay.js"></script>
+</body>
+</html>

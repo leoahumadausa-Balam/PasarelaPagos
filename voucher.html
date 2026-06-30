@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1Click - Comprobante de Pago</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos de Comprobante -->
+    <link rel="stylesheet" href="css/voucher.css">
+</head>
+<body>
+
+    <div class="voucher-wrapper">
+        <!-- Tarjeta del Comprobante (Efecto Boleta de Papel) -->
+        <main class="voucher-card" id="print-area">
+            
+            <!-- Encabezado de la Boleta -->
+            <header class="voucher-header">
+                <div class="logo-area">
+                    <i class="fa-solid fa-layer-group"></i> A1<span>Click</span>
+                </div>
+                <div class="receipt-type-badge">
+                    BOLETA ELECTRÓNICA SIMULADA
+                </div>
+                <div class="success-badge">
+                    <i class="fa-solid fa-circle-check"></i> Pago Exitoso mediante Webpay
+                </div>
+            </header>
+
+            <hr class="dashed-divider">
+
+            <!-- Información General de Transacción -->
+            <section class="voucher-meta">
+                <div class="meta-row">
+                    <span class="meta-label">Nº de Orden:</span>
+                    <span class="meta-value font-mono" id="order-number-val">A1C-XXXXXX</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Fecha y Hora:</span>
+                    <span class="meta-value" id="date-val">-</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Método Pago:</span>
+                    <span class="meta-value">Webpay Plus (Débito/Crédito)</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Comercio:</span>
+                    <span class="meta-value">A1Click S.A.</span>
+                </div>
+            </section>
+
+            <hr class="dashed-divider">
+
+            <!-- Tabla de Detalles de Productos -->
+            <section class="voucher-details">
+                <table class="details-table">
+                    <thead>
+                        <tr>
+                            <th>Cant.</th>
+                            <th>Descripción</th>
+                            <th class="text-right">Unit.</th>
+                            <th class="text-right">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="voucher-items-body">
+                        <!-- Items insertados dinámicamente -->
+                    </tbody>
+                </table>
+            </section>
+
+            <hr class="dashed-divider">
+
+            <!-- Resumen de Costos -->
+            <section class="voucher-totals">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal-val" class="font-mono">$0</span>
+                </div>
+                <div class="total-row">
+                    <span>IVA (19%):</span>
+                    <span id="iva-val" class="font-mono">$0</span>
+                </div>
+                <div class="total-row grand-total">
+                    <span>Total Pagado:</span>
+                    <span id="total-val" class="font-mono">$0</span>
+                </div>
+            </section>
+
+            <hr class="dashed-divider">
+
+            <!-- Pie del Comprobante -->
+            <footer class="voucher-footer">
+                <p>Gracias por tu compra simulada en A1Click.</p>
+                <div class="barcode">
+                    <!-- Simulación de código de barras con barras CSS -->
+                    <div class="bar bar-1"></div>
+                    <div class="bar bar-2"></div>
+                    <div class="bar bar-3"></div>
+                    <div class="bar bar-4"></div>
+                    <div class="bar bar-5"></div>
+                    <div class="bar bar-2"></div>
+                    <div class="bar bar-1"></div>
+                    <div class="bar bar-3"></div>
+                    <div class="bar bar-5"></div>
+                    <div class="bar bar-4"></div>
+                    <div class="bar bar-2"></div>
+                </div>
+                <p class="verification-code">Código de Verificación: <span id="verif-code-val"></span></p>
+            </footer>
+        </main>
+
+        <!-- Botones de Acción (Se ocultan al imprimir) -->
+        <div class="action-buttons">
+            <button id="btn-print" class="btn-action btn-print-style">
+                <i class="fa-solid fa-print"></i> Imprimir Comprobante
+            </button>
+            <button id="btn-home" class="btn-action btn-home-style">
+                <i class="fa-solid fa-house-chimney"></i> Volver al Inicio
+            </button>
+        </div>
+    </div>
+
+    <!-- Script de Lógica del Comprobante -->
+    <script src="js/voucher.js"></script>
+</body>
+</html>

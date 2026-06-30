@@ -1,0 +1,325 @@
+/* Estilos del Comprobante / Voucher (A1Click) */
+:root {
+    --bg-color: #f1f5f9;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #cbd5e1;
+    --primary-color: #0f52ba;
+    --primary-hover: #0a4095;
+    --font-family: 'Outfit', sans-serif;
+    --font-mono: 'Courier Prime', monospace;
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+.voucher-wrapper {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Tarjeta Boleta */
+.voucher-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 16px -6px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem 2rem;
+    position: relative;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    overflow: hidden;
+}
+
+/* Decoración tipo recibo rasgado (en la parte superior e inferior) */
+.voucher-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-image: radial-gradient(circle, var(--bg-color) 4px, transparent 5px);
+    background-size: 12px 12px;
+    background-position: -6px -6px;
+    background-repeat: repeat-x;
+}
+
+/* Encabezado */
+.voucher-header {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.logo-area {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.logo-area span {
+    color: var(--text-color);
+}
+
+.receipt-type-badge {
+    display: inline-block;
+    border: 1px solid var(--text-color);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.25rem 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+}
+
+.success-badge {
+    color: #10b981; /* Verde */
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+/* Divisor punteado de boleta */
+.dashed-divider {
+    border: none;
+    border-top: 2px dashed var(--border-color);
+    margin: 1.25rem 0;
+    height: 0;
+}
+
+/* Metadatos */
+.voucher-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.meta-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.meta-label {
+    color: var(--text-muted);
+}
+
+.meta-value {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.font-mono {
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+/* Detalles de Productos */
+.voucher-details {
+    margin: 1.5rem 0;
+}
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.details-table th {
+    font-weight: 700;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    text-align: left;
+}
+
+.details-table td {
+    padding: 0.6rem 0;
+    vertical-align: top;
+    color: var(--text-color);
+}
+
+.details-table th:first-child, .details-table td:first-child {
+    width: 12%;
+}
+
+.details-table th:nth-child(2), .details-table td:nth-child(2) {
+    width: 48%;
+}
+
+.details-table th:nth-child(3), .details-table td:nth-child(3),
+.details-table th:nth-child(4), .details-table td:nth-child(4) {
+    text-align: right;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Totales */
+.voucher-totals {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+}
+
+.total-row.grand-total {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--text-color);
+    padding-top: 0.5rem;
+}
+
+.total-row.grand-total span:last-child {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+/* Footer / Código de barras */
+.voucher-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.voucher-footer p {
+    margin-bottom: 0.75rem;
+}
+
+.barcode {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    align-items: stretch;
+    gap: 2px;
+    margin: 1rem 0;
+}
+
+.bar {
+    background-color: #111827;
+}
+
+.bar-1 { width: 2px; }
+.bar-2 { width: 4px; }
+.bar-3 { width: 6px; }
+.bar-4 { width: 1px; }
+.bar-5 { width: 8px; }
+
+.verification-code {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Botones de acción */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.5rem;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+}
+
+.btn-print-style {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 6px rgba(15, 82, 186, 0.15);
+}
+
+.btn-print-style:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(15, 82, 186, 0.25);
+}
+
+.btn-home-style {
+    background-color: #ffffff;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.btn-home-style:hover {
+    background-color: var(--bg-color);
+    border-color: var(--text-muted);
+    transform: translateY(-2px);
+}
+
+/* ESTILOS DE IMPRESIÓN (Optimización para impresión / PDF) */
+@media print {
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        display: block;
+        padding: 0;
+    }
+
+    .voucher-wrapper {
+        max-width: 100%;
+        gap: 0;
+    }
+
+    .voucher-card {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        width: 100% !important;
+    }
+
+    .voucher-card::before {
+        display: none; /* Quitar efecto de rasgado superior */
+    }
+
+    .action-buttons {
+        display: none !important; /* Ocultar botones */
+    }
+}

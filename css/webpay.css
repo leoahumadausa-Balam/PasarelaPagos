@@ -1,0 +1,424 @@
+/* Estilos del Portal Webpay Plus (Transbank) - Réplica Visual Premium */
+:root {
+    --tb-red: #e61919;               /* Rojo Transbank */
+    --tb-red-hover: #cc1414;
+    --tb-gray-bg: #f5f7fa;           /* Fondo gris claro */
+    --tb-border: #dcdfe6;
+    --tb-text-dark: #303133;         /* Texto principal */
+    --tb-text-light: #909399;        /* Texto secundario */
+    --tb-sidebar-bg: #2d313a;        /* Fondo oscuro lateral */
+    --font-family: 'Roboto', sans-serif;
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: #e9eef2;
+    color: var(--tb-text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.webpay-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.webpay-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.webpay-header {
+    background-color: #ffffff;
+    border-bottom: 2px solid var(--tb-red);
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wp-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -1px;
+}
+
+.wp-badge {
+    background-color: var(--tb-red);
+    color: #ffffff;
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+}
+
+.wp-type {
+    color: #555555;
+    margin-left: 0.2rem;
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+
+.tb-logo {
+    color: var(--tb-red);
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.5px;
+}
+
+/* Contenido Principal */
+.webpay-content {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* Columna Izquierda: Información de Transacción */
+.transaction-summary {
+    background-color: var(--tb-sidebar-bg);
+    color: #ffffff;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.transaction-summary h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a3a9b6;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.summary-label {
+    font-size: 0.85rem;
+    color: #a3a9b6;
+}
+
+.summary-value {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.summary-item.amount-item {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    border-left: 4px solid var(--tb-red);
+}
+
+.summary-value.amount {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.security-info {
+    font-size: 0.8rem;
+    color: #a3a9b6;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    line-height: 1.4;
+}
+
+.security-info i {
+    color: #67c23a;
+    font-size: 0.95rem;
+    margin-top: 2px;
+}
+
+/* Columna Derecha: Formulario de Pago */
+.payment-form-section {
+    padding: 2rem;
+    background-color: #ffffff;
+}
+
+.payment-tabs {
+    border-bottom: 1px solid var(--tb-border);
+    margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--tb-text-dark);
+    padding: 0.75rem 1rem;
+    border-bottom: 3px solid var(--tb-red);
+    cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #606266;
+}
+
+.input-icon-wrapper {
+    position: relative;
+}
+
+.payment-form input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    border: 1px solid var(--tb-border);
+    border-radius: 4px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.payment-form input:focus {
+    border-color: var(--tb-red);
+    box-shadow: 0 0 0 2px rgba(230, 25, 25, 0.15);
+}
+
+.input-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    color: var(--tb-text-light);
+}
+
+.cvc-hint-btn {
+    cursor: help;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Error validation styling */
+.form-group.error input {
+    border-color: var(--tb-red);
+    background-color: #fef0f0;
+}
+
+.error-msg {
+    color: var(--tb-red);
+    font-size: 0.8rem;
+    display: none;
+    margin-top: -2px;
+}
+
+.form-group.error .error-msg {
+    display: block;
+}
+
+/* Acciones del formulario */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--tb-border);
+}
+
+.btn-cancel {
+    color: var(--tb-text-light);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-cancel:hover {
+    color: var(--tb-text-dark);
+}
+
+.btn-pay {
+    background-color: var(--tb-red);
+    color: #ffffff;
+    border: none;
+    padding: 0.85rem 2rem;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 3px 6px rgba(230, 25, 25, 0.2);
+}
+
+.btn-pay:hover {
+    background-color: var(--tb-red-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(230, 25, 25, 0.3);
+}
+
+.btn-pay:active {
+    transform: translateY(0);
+}
+
+/* Footer */
+.webpay-footer {
+    background-color: var(--tb-gray-bg);
+    border-top: 1px solid var(--tb-border);
+    padding: 1.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+}
+
+.webpay-footer p {
+    font-size: 0.8rem;
+    color: var(--tb-text-light);
+    max-width: 500px;
+}
+
+.logos-footer {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+    color: var(--tb-text-light);
+}
+
+/* Pantalla de Carga Transbank */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(233, 238, 242, 0.9);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loader-card {
+    background: #ffffff;
+    padding: 2.5rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    border-top: 4px solid var(--tb-red);
+}
+
+.loader-card h2 {
+    font-size: 1.25rem;
+    margin: 1.5rem 0 0.5rem;
+    font-weight: 700;
+    color: var(--tb-text-dark);
+}
+
+.loader-card p {
+    font-size: 0.9rem;
+    color: var(--tb-text-light);
+}
+
+/* Spinner Double Bounce */
+.spinner {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.double-bounce1, .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--tb-red);
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+    animation-delay: -1.0s;
+}
+
+@keyframes sk-bounce {
+    0%, 100% { 
+        transform: scale(0.0);
+    } 50% { 
+        transform: scale(1.0);
+    }
+}
+
+/* Adaptabilidad Desktop */
+@media (min-width: 768px) {
+    .webpay-content {
+        grid-template-columns: 35% 65%;
+    }
+    
+    .transaction-summary {
+        border-right: 1px solid var(--tb-border);
+    }
+    
+    .webpay-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}

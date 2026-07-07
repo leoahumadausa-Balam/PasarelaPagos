@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1Click - Administración de Productos</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos del Proyecto -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Estilos Específicos del Administrador -->
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <!-- Barra de Navegación -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-layer-group"></i> A1<span>Click</span> <small class="admin-badge">Admin</small>
+            </a>
+            <div class="navbar-actions">
+                <a href="index.html" class="admin-nav-btn" title="Volver al Catálogo">
+                    <i class="fa-solid fa-arrow-left"></i> <span>Volver al Catálogo</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Panel de Administración</h1>
+            <p>Módulo de registro e ingreso de nuevos productos al catálogo e inventario general.</p>
+        </div>
+    </section>
+
+    <!-- Contenedor Principal -->
+    <main class="container">
+        <div class="admin-card">
+            <div class="card-header">
+                <h2><i class="fa-solid fa-box-archive"></i> Registrar Nuevo Producto</h2>
+                <p>Completa todos los campos obligatorios para registrar un producto con sus controles internos de validación.</p>
+            </div>
+            
+            <form id="product-form" novalidate>
+                <!-- Formulario en Grid para columnas -->
+                <div class="form-grid">
+                    
+                    <!-- Campo: Nombre -->
+                    <div class="form-group" id="group-name">
+                        <label for="product-name">Nombre del Producto <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-signature input-icon"></i>
+                            <input type="text" id="product-name" name="name" placeholder="Ej: Resma Papel Carta 500u" autocomplete="off" required>
+                        </div>
+                        <span class="error-msg" id="name-error">El nombre es requerido.</span>
+                    </div>
+
+                    <!-- Campo: SKU -->
+                    <div class="form-group" id="group-sku">
+                        <label for="product-sku">SKU (Código único) <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-barcode input-icon"></i>
+                            <input type="text" id="product-sku" name="sku" placeholder="Ej: RSM12" autocomplete="off" required>
+                        </div>
+                        <span class="error-msg" id="sku-error">El SKU es requerido.</span>
+                    </div>
+
+                    <!-- Campo: Precio Unitario -->
+                    <div class="form-group" id="group-price">
+                        <label for="product-price">Precio Unitario (CLP) <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-dollar-sign input-icon"></i>
+                            <input type="number" id="product-price" name="price" placeholder="Ej: 4990" min="0" required>
+                        </div>
+                        <span class="error-msg" id="price-error">El precio es requerido.</span>
+                    </div>
+
+                    <!-- Campo: Stock Inicial -->
+                    <div class="form-group" id="group-stock">
+                        <label for="product-stock">Stock Inicial <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-boxes-stacked input-icon"></i>
+                            <input type="number" id="product-stock" name="stock" placeholder="Ej: 100" min="0" required>
+                        </div>
+                        <span class="error-msg" id="stock-error">El stock inicial es requerido.</span>
+                    </div>
+
+                    <!-- Campo: Categoría / Grupo de Alerta -->
+                    <div class="form-group" id="group-category">
+                        <label for="product-category">Grupo de Alerta / Categoría <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-tags input-icon"></i>
+                            <select id="product-category" name="category" required>
+                                <option value="" disabled selected>Seleccione una categoría...</option>
+                                <option value="Resmas">Resmas</option>
+                                <option value="Carpetas">Carpetas</option>
+                                <option value="Lápices">Lápices</option>
+                                <option value="Tecnología">Tecnología</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <span class="error-msg" id="category-error">Debes seleccionar una categoría.</span>
+                    </div>
+
+                    <!-- Campo: Imagen del Producto -->
+                    <div class="form-group" id="group-image">
+                        <label for="product-image">Imagen del Producto (PNG, JPG) <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-image input-icon"></i>
+                            <input type="file" id="product-image" name="image" accept="image/png, image/jpeg, image/webp" required style="padding-top: 0.6rem;">
+                        </div>
+                        <span class="error-msg" id="image-error">Debes adjuntar una imagen válida.</span>
+                    </div>
+
+                    <!-- Campo: Estado del Producto (Radio buttons) -->
+                    <div class="form-group" id="group-status">
+                        <label>Estado del Producto <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="status" value="Activo" checked>
+                                <span class="radio-custom"></span>
+                                <span class="radio-text"><i class="fa-solid fa-circle-check text-success"></i> Activo</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="status" value="Inactivo">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text"><i class="fa-solid fa-circle-xmark text-danger"></i> Inactivo</span>
+                            </label>
+                        </div>
+                        <span class="error-msg" id="status-error"></span>
+                    </div>
+                </div>
+
+                <!-- Campo: Alerta de Stock Bajo (Checkbox) -->
+                <div class="form-group checkbox-group" id="group-stock-alert">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="stock-alert" name="stockAlert">
+                        <span class="checkbox-custom"></span>
+                        <span class="checkbox-text">Activar Alerta de Stock Bajo (Notificar cuando las existencias estén por debajo del mínimo)</span>
+                    </label>
+                </div>
+
+                <!-- Botones del Formulario -->
+                <div class="form-actions-admin">
+                    <button type="button" id="clear-btn" class="btn btn-secondary">
+                        <i class="fa-solid fa-eraser"></i> Limpiar Formulario
+                    </button>
+                    <button type="submit" id="save-btn" class="btn btn-primary">
+                        <i class="fa-solid fa-floppy-disk"></i> Guardar Producto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <p>&copy; 2026 A1Click. Todos los derechos reservados. Panel de Administración y Control de Datos.</p>
+    </footer>
+
+    <!-- Contenedor para la Notificación Toast -->
+    <div id="toast-container" class="toast-container">
+        <div id="success-toast" class="toast">
+            <div class="toast-body">
+                <i class="fa-solid fa-circle-check toast-icon"></i>
+                <div class="toast-details">
+                    <h4 class="toast-title">¡Ingreso Exitoso!</h4>
+                    <p class="toast-text">Producto registrado correctamente en el inventario.</p>
+                </div>
+            </div>
+            <button type="button" class="toast-close" id="toast-close-btn" aria-label="Cerrar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Script de Lógica del Administrador -->
+    <script src="js/admin.js"></script>
+</body>
+</html>

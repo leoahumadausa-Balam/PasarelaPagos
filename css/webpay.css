@@ -56,31 +56,48 @@ body {
 .wp-logo {
     display: flex;
     align-items: center;
+    font-family: 'Outfit', sans-serif;
     font-size: 1.6rem;
-    font-weight: 800;
-    font-style: italic;
-    letter-spacing: -1px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .wp-badge {
     background-color: var(--tb-red);
     color: #ffffff;
-    padding: 0.1rem 0.5rem;
-    border-radius: 4px;
+    padding: 0.15rem 0.6rem;
+    border-radius: 8px;
+    font-weight: 800;
+    box-shadow: 0 2px 6px rgba(229, 26, 75, 0.3);
 }
 
 .wp-type {
-    color: #555555;
-    margin-left: 0.2rem;
-    font-weight: 400;
-    font-size: 1.4rem;
+    color: #475569;
+    margin-left: 0.3rem;
+    font-weight: 300;
+    font-size: 1.5rem;
 }
 
 .tb-logo {
     color: var(--tb-red);
-    font-weight: 800;
-    font-size: 1.25rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
     letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.tb-logo::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: var(--tb-red);
+    border-radius: 50%;
+    margin-right: 0.2rem;
+    opacity: 0.9;
 }
 
 /* Contenido Principal */

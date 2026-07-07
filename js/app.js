@@ -26,6 +26,42 @@ const PRODUCTOS = [
     }
 ];
 
+// Cargar producto nuevo desde localStorage si existe
+const cargarNuevosProductos = () => {
+    // 1. Cargar el array de productos nuevos (para soporte de múltiples ingresos)
+    const nuevosProductosGuardados = localStorage.getItem('nuevosProductos');
+    if (nuevosProductosGuardados) {
+        try {
+            const prods = JSON.parse(nuevosProductosGuardados);
+            if (Array.isArray(prods)) {
+                prods.forEach(prod => {
+                    const existe = PRODUCTOS.find(p => p.id === prod.id);
+                    if (!existe) {
+                        PRODUCTOS.push(prod);
+                    }
+                });
+            }
+        } catch (e) {
+            console.error("Error al cargar los nuevos productos:", e);
+        }
+    }
+    
+    // 2. Migración/Soporte para si quedó guardado el formato antiguo
+    const viejo = localStorage.getItem('nuevoProducto');
+    if (viejo) {
+        try {
+            const prod = JSON.parse(viejo);
+            const existe = PRODUCTOS.find(p => p.id === prod.id);
+            if (!existe) {
+                PRODUCTOS.push(prod);
+            }
+        } catch(e) {}
+    }
+};
+
+// Inicializar carga de nuevos productos
+cargarNuevosProductos();
+
 // Estado global de la aplicación (Carrito)
 let carrito = [];
 

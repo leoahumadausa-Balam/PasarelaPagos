@@ -454,3 +454,64 @@
         min-width: 180px;
     }
 }
+
+/* ==========================================================================
+   Ayuda en línea (Tooltips)
+   ========================================================================== */
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    margin-left: 0.35rem;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.help-icon {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: var(--transition-smooth);
+}
+
+.help-icon:hover {
+    color: var(--primary-color);
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 240px;
+    background-color: #1e293b; /* Slate 800 */
+    color: #ffffff;
+    text-align: left;
+    border-radius: var(--radius-sm);
+    padding: 0.75rem;
+    position: absolute;
+    z-index: 100;
+    bottom: 130%; /* Position above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.45;
+    box-shadow: var(--shadow-lg);
+    pointer-events: none;
+}
+
+/* Flecha apuntando hacia abajo */
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1e293b transparent transparent transparent;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}

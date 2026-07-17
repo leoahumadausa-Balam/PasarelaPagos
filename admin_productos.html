@@ -63,7 +63,13 @@
 
                     <!-- Campo: SKU -->
                     <div class="form-group" id="group-sku">
-                        <label for="product-sku">SKU (Código único) <span class="required">*</span></label>
+                        <label for="product-sku">
+                            SKU (Código único) <span class="required">*</span>
+                            <span class="tooltip-container" aria-label="Ayuda SKU">
+                                <i class="fa-solid fa-circle-question help-icon"></i>
+                                <span class="tooltip-text">El SKU debe ser un código alfanumérico único de al menos 5 caracteres, utilizado para identificar el producto en bodega</span>
+                            </span>
+                        </label>
                         <div class="input-wrapper">
                             <i class="fa-solid fa-barcode input-icon"></i>
                             <input type="text" id="product-sku" name="sku" placeholder="Ej: RSM12" autocomplete="off" required>

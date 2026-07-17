@@ -223,6 +223,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Ejecutar controles de validación
         if (validarFormulario()) {
+            const confirmar = window.confirm("¿Está seguro de que desea registrar este nuevo producto en el catálogo general?");
+            if (!confirmar) {
+                return;
+            }
+
             const file = inputImage.files[0];
             const reader = new FileReader();
 
